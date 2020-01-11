@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  lego-njalla-api:
+    image: njalla-letsencrypt:latest
+    ports:
+      - 8080:80
+    environment:
+      - HTTPREQ_USERNAME=${HTTPREQ_USERNAME}
+      - HTTPREQ_PASSWORD=${HTTPREQ_PASSWORD}
+      - NJALLA_USERNAME=${NJALLA_USERNAME}
+      - NJALLA_PASSWORD=${NJALLA_PASSWORD}
