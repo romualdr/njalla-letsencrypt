@@ -1,7 +1,7 @@
 #
 # Modules
 #
-FROM node:12 AS modules
+FROM node:13-alpine AS modules
 
 RUN mkdir /app
 WORKDIR /app

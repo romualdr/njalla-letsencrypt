@@ -39,11 +39,12 @@ We advise you to use [docker](https://docker.com) to test your configuration. Th
 $ docker run --rm -ti \
     -e "HTTPREQ_USERNAME=lego" \
     -e "HTTPREQ_PASSWORD=password" \
-    -e "HTTPREQ_ENDPOINT=http://127.0.0.1:8080" \
-        goacme/lego --server=https://acme-staging-v02.api.letsencrypt.org/directory
-        --dns httpreq \
-    --domains my_domain.io \
-    --email hello@romualdr.io run
+    -e "HTTPREQ_ENDPOINT=http://localhost:8080" \
+        goacme/lego \
+            --server=https://acme-staging-v02.api.letsencrypt.org/directory \
+            --dns httpreq \
+            --domains domain.io \
+            --email hello@romualdr.io run
 ```
 
 *Note that this command uses staging LE environment to avoid hitting the request limit*
