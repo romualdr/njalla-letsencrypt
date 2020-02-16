@@ -55,4 +55,4 @@ $ docker run --rm -ti \
 
 ## Deploy it
 
-`docker-compose -f ./docker/docker-compose.yml up -d lego-njalla-api` 
+`docker-compose -f ./docker/docker-compose.yml up -d lego-njalla-api`
