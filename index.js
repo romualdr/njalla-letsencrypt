@@ -1,6 +1,6 @@
 const configuration = require('./configuration')
 const fastify = require('fastify')({ logger: { level: 'warn' }})
-const parseDomain = require('parse-domain')
+const getRootDomain = require('extract-domain')
 const { login, getDomains, getRecords, update, add, remove } = require('njalla-dns')
 
 fastify.register(require('fastify-basic-auth'), { validate: async (username, password, req, reply) => {
@@ -13,9 +13,8 @@ fastify.register(require('fastify-basic-auth'), { validate: async (username, pas
 }})
 
 const getInformations = async (body, { doLogin, checkContent }) => {
-    const parsed = parseDomain(body.fqdn.substring(0, body.fqdn.length - 1))
-    const rootDomain = `${parsed.domain}.${parsed.tld}`
-    
+    const rootDomain = getRootDomain(body.fqdn.substring(0, body.fqdn.length - 1))
+
     if (doLogin)
         await login(configuration.dnsUsername, configuration.dnsPassword)
     const domains = await getDomains()

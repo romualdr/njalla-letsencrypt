@@ -1,6 +1,6 @@
 {
   "name": "njalla-letsencrypt",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A lego (let's encrypt) compliant / njalla API to allow for automatic wildcard generation",
   "main": "index.js",
   "scripts": {
@@ -9,10 +9,10 @@
   "keywords": [],
   "dependencies": {
     "dotenv": "^8.2.0",
+    "extract-domain": "^2.2.1",
     "fastify": "^2.11.0",
     "fastify-basic-auth": "^0.5.0",
-    "njalla-dns": "^1.0.4",
-    "parse-domain": "^2.3.4",
+    "njalla-dns": "^1.0.6",
     "url-parse": "^1.4.7"
   },
   "author": {
