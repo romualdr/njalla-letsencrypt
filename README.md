@@ -1,5 +1,7 @@
 # njalla-letsencrypt
 
+> **WARNING** This is **deprecated**. You should instead use the official LEGO provider [https://go-acme.github.io/lego/dns/njalla/](https://go-acme.github.io/lego/dns/njalla/)
+
 API for [njal.la](https://njal.la) automatic wildcard certification with Let's Encrypt (compatible with [lego's](https://github.com/go-acme/lego) httpreq strategy).
 
 It relies on an unofficial njal.la library [node-njalla-dns](https://github.com/romualdr/node-njalla-dns) to adminstrate your domains as njal.la doesn't have an API. 
