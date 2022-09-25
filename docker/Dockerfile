@@ -20,8 +20,7 @@ WORKDIR /app
 ENV PORT=80
 ENV HTTPREQ_USERNAME=
 ENV HTTPREQ_PASSWORD=
-ENV NJALLA_USERNAME=not_an_actual_account
-ENV NJALLA_PASSWORD=not_an_actual_password
+ENV NJALLA_API_KEY=not_an_actual_api_key
 EXPOSE 80
 
 COPY ./ ./
