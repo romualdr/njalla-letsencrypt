@@ -1,27 +1,28 @@
 # njalla-letsencrypt
 
 > **WARNING** This is **deprecated**. You should instead use the official LEGO provider [https://go-acme.github.io/lego/dns/njalla/](https://go-acme.github.io/lego/dns/njalla/)
+> Updated 25/09/2022: njal.la api was updated - and lego lib wasn't working anymore.
+> A patch was provided but Traefik 2.9 is still not including the patch. (failed to unmarshal response result: json: cannot unmarshal string into Go struct field Record.id of type int when trying to renew certificates)
+> Solution ? Use this tool as an http provider to correctly renew certificates. So this is temporarily undeprecated to patch this Traefik issue.
 
 API for [njal.la](https://njal.la) automatic wildcard certification with Let's Encrypt (compatible with [lego's](https://github.com/go-acme/lego) httpreq strategy).
 
-It relies on an unofficial njal.la library [node-njalla-dns](https://github.com/romualdr/node-njalla-dns) to adminstrate your domains as njal.la doesn't have an API. 
+Disclosure: It relies on my unofficial njal.la library [node-njalla-dns](https://github.com/romualdr/node-njalla-dns) to administrate your domains.
 
 ## Run it
 
 You need [node](https://nodejs.org/en/) and [npm](https://npmjs.com)
 
 **Don't** forget to change variables.
-- `NJALLA_USERNAME` is your njal.la username
-- `NJALLA_PASSWORD` is your njal.la password
+- `NJALLA_API_KEY` is your njal.la API key (Go on [https://njal.la/settings/api/](https://njal.la/settings/api/) to grab one)
 - `HTTPREQ_USERNAME` is a username that will be used by lego to access this API
 - `HTTPREQ_PASSWORD` is a password that will be used by lego to access this API
 
 ```sh
-$ NJALLA_USERNAME=your_njalla_username \
-  NJALLA_PASSWORD=your_njalla_password \
+$ npm install && NJALLA_API_KEY=your_njalla_api_key \
   HTTPREQ_USERNAME=lego \
   HTTPREQ_PASSWORD=password \
-  npm install && npm run start
+  npm run start
 ```
 
 ## Test it
@@ -39,7 +40,7 @@ We advise you to use [docker](https://docker.com) to test your configuration. Th
 $ docker run --rm -ti \
     -e "HTTPREQ_USERNAME=lego" \
     -e "HTTPREQ_PASSWORD=password" \
-    -e "HTTPREQ_ENDPOINT=http://localhost:8080" \
+    -e "HTTPREQ_ENDPOINT=http://<your_local_ip_like_192_168_0_xx>:8080" \
         goacme/lego \
             --server=https://acme-staging-v02.api.letsencrypt.org/directory \
             --dns httpreq \
