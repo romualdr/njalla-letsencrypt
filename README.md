@@ -1,8 +1,11 @@
 # njalla-letsencrypt
 
 > **WARNING** This is **deprecated**. You should instead use the official LEGO provider [https://go-acme.github.io/lego/dns/njalla/](https://go-acme.github.io/lego/dns/njalla/)
+
 > Updated 25/09/2022: njal.la api was updated - and lego lib wasn't working anymore.
+
 > A patch was provided but Traefik 2.9 is still not including the patch. (failed to unmarshal response result: json: cannot unmarshal string into Go struct field Record.id of type int when trying to renew certificates)
+
 > Solution ? Use this tool as an http provider to correctly renew certificates. So this is temporarily undeprecated to patch this Traefik issue.
 
 API for [njal.la](https://njal.la) automatic wildcard certification with Let's Encrypt (compatible with [lego's](https://github.com/go-acme/lego) httpreq strategy).
